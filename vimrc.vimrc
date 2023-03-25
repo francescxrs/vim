@@ -69,5 +69,5 @@ let mapleader = ","
 	noremap <leader>tv :botright vnew <Bar> :terminal<CR>
 	noremap <leader>th :botright new <Bar> :terminal<CR>
 
-	noremap <leader>,t :! pdflatex %<CR><CR>
-	noremap <leader>,z :! zathura $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
+	noremap <leader>,tt :! pdflatex %<CR><CR>
+	noremap <leader>,zz :! zathura $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
