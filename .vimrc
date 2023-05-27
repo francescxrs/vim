@@ -70,6 +70,9 @@ hi WebDevIconsDefaultFolderSymbol ctermfg=11
 hi clear SpellBad
 hi SpellBad cterm=undercurl guisp=NONE ctermfg=NONE ctermbg=NONE gui=undercurl guifg=NONE guibg=NONE
 
+hi EspaisFinals ctermbg=218 guibg=7
+match EspaisFinals /\s\{1,200}$/
+
 " Indent-Blankline
 let g:indent_blankline_char = '▏'
 let g:indent_blankline_char_blankline = ''
