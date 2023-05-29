@@ -64,18 +64,19 @@ call plug#end()
 " Plugin pel colorscheme previament instal·lat
 colorscheme meh
 
+" Redefinim highlights segons interès
 " 240 és equivalent a #585858
 hi NonText ctermfg=240 gui=italic guifg=#70788a
 hi WebDevIconsDefaultFolderSymbol ctermfg=11
-
 hi clear SpellBad
 hi SpellBad cterm=undercurl guisp=NONE ctermfg=NONE ctermbg=NONE gui=undercurl guifg=NONE guibg=NONE
 
+" Definim nous highlights
 hi EspaisFinals ctermbg=218 guibg=7
-match EspaisFinals /\s\{1,200}$/
-
 hi MyTabs ctermfg=11 guibg=#fff8a
-match MyTabs /\t/
+" Definim els pattern matches pels highlights en qüestió
+match EspaisFinals /\s\{1,200}$/
+2match MyTabs /\t/
 
 " Indent-Blankline
 let g:indent_blankline_char = '▏'
