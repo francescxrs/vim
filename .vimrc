@@ -194,7 +194,7 @@ let mapleader = ","
 	noremap <leader>wq :wq<CR>
 
 
-" Chuletairo
+" Chuletario
 " cterm en número, gui en hex.
 
 "0		Black (SYSTEM)		#000000	rgb(0,0,0)			hsl(0,0%,0%)
