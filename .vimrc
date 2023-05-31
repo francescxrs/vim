@@ -1,54 +1,51 @@
-" Enable syntax hightlighting
+" Enable syntax hightlighting and Enables filetype detection
 syntax on
-" Enables filetype detection
 filetype on
-" When a file is edited its plugin file is loaded (if there is one for the detected filetype)
+" Enable plugins and load indent file if there is one for the detected filetype
 filetype plugin on
-" When a file is edited its indent file is loaded (if there is one for the detected filetype)
 filetype indent on
-
+" Sets per disposar de numero de linea, numero de linea relatiu i ús de mouse
 set number
 set relativenumber
 set mouse=a
+" Set de numero d'espais en relació a tab i en relació a indentation
 set tabstop=4
 set shiftwidth=4
+" Eliminar opció de backup
 set nobackup
-set background=dark
+set nowritebackup
+" Oculta --INSERTAR--, --VISUAL-- etc.
 set noshowmode
+" Encodificació per a terminal
 set encoding=UTF-8
-
-set omnifunc=javascriptcomplete#CompleteJS
-set omnifunc=htmlcomplete#CompleteTags
-set omnifunc=csscomplete#CompleteCSS
-set omnifunc=phpcomplete#CompletePHP
-
-set complete+=kspell
-set completeopt=menuone,longest
-set shortmess+=c
-
-" Configuració de highlights
+" To improve vim plug autocompleteopt
+"set completeopt=menuone,longest
+"set shortmess+=c
+" Habilitar configuració de highlights
 set hlsearch
+" Modifiquem visualització de caràcters amb símbols personalitzats
+set list
+set listchars=tab:\░\ ,eol:↴
 
 " NeoVim Vim-Plug
 call plug#begin('~/.vim/plugged')
 	" Adds filetype glyphs (icons) to various vim plugins
-	" Supports plugins such as NERDTree, vim-airline, CtrlP, powerline, denite, unite, 	
-	" lightline.vim, vim-startify, vimfiler, vim-buffet and flagship.
+	" Supports other plugins such as NERDTree...
 	Plug 'ryanoasis/vim-devicons'
-	" This adds syntax for nerdtree on most common file extensions
-	" Modificar colors a nerdtree.vim per a cada extensió
+	" Adds syntax for nerdtree on most common file extensions
+	" Modificar colors a nerdtree.vim per a cada extensió si es desitja
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	" Millora la syntax de js
 	Plug 'jelera/vim-javascript-syntax'
 	" Llibreria lua necessària per telescope etc.
 	Plug 'nvim-lua/plenary.nvim'
-	" Cercador d'arxius o text 
+	" Cercador d'arxius o text
 	Plug 'nvim-telescope/telescope.nvim'
 	" Per comentar o descomentar línees o blocs de codi
 	Plug 'preservim/nerdcommenter'
 	" Per millorar hightlighting etc.
 	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-	" Fuzzy Finder : It's an interactive Unix filter for command-line that can be used with 
+	" Fuzzy Finder : It's an interactive Unix filter for command-line that can be used with
 	" any list; files, command history, processes, hostnames, bookmarks, git commits, etc.
 	" Requereix instal·lar fzf al sistema via terminal prèviament via git clone o altres..
 	" Requereix bat (cat with wings) per previsualitzar a color
@@ -60,47 +57,42 @@ call plug#end()
 
 " Set pel colorscheme previament instal·lat
 colorscheme meh
-"
-" Modifiquem highlights
-" Per a simbols end of line i similars
-hi NonText ctermfg=240 gui=italic guifg=#70788a
-" Carpetes a NerdTree
-hi WebDevIconsDefaultFolderSymbol ctermfg=11
-" Per a corrector
-hi SpellBad cterm=undercurl guisp=NONE ctermfg=NONE ctermbg=NONE gui=undercurl guifg=NONE guibg=NONE
 
-" Visualitzem alguns caràcters amb certs símbols
-set list
-set listchars=tab:\│\ ,eol:↴
+" Modifiquem highlights per a simbols end of line, carpetes de NerdTree i corrector
+hi NonText gui=italic ctermfg=240 guifg=#585858
+hi WebDevIconsDefaultFolderSymbol ctermfg=11 guifg=#ffff00
+hi SpellBad cterm=undercurl guisp=NONE ctermfg=NONE ctermbg=NONE gui=undercurl guifg=NONE guibg=NONE
 
 " Definim nous highlights
 hi EspaisFinals ctermbg=218 ctermfg=NONE guibg=7 guifg=NONE 
+hi MyComments ctermbg=NONE ctermfg=71 guibg=NONE guifg=#5faf5f
 " Definim i visualitzem cada tab
-	hi MyTabOne ctermbg=NONE ctermfg=230 guifg=#fff8d7 guibg=NONE
+	hi MyTabOne ctermbg=NONE ctermfg=230 guifg=#ffffd7 guibg=NONE
 		hi MyTabTwo ctermbg=NONE ctermfg=229 guibg=#ffffaf guibg=NONE
 			hi MyTabThree ctermbg=NONE ctermfg=228 guibg=#ffff87 guibg=NONE
-				hi MyTabFour ctermbg=NONE ctermfg=227 guibg=#ffff5f guibg=NONE
-					hi MyTabFive ctermbg=NONE ctermfg=221 guibg=#ffd75f guibg=NONE
-						hi MyTabSix ctermbg=NONE ctermfg=220 guibg=#ffd700 guibg=NONE
-							hi MyTabSeven ctermbg=NONE ctermfg=226 guibg=#ffff00 guibg=NONE
-								hi MyTabEight ctermbg=NONE ctermfg=214 guibg=#ffaf00 guibg=NONE
-									hi MyTabNine ctermbg=NONE ctermfg=208 guibg=#ff8700 guibg=NONE
-										hi MyTabTen ctermbg=NONE ctermfg=202 guibg=#ff5f00 guibg=NONE
-											hi MyTabEleven ctermbg=NONE ctermfg=196 guibg=#ff0000  guibg=NONE
-												hi MyTabTwelve ctermbg=NONE ctermfg=197 guibg=#ff005f guibg=NONE
-													hi MyTabThirteen ctermbg=NONE ctermfg=198 guibg=#ff0087 guibg=NONE
-														hi MyTabFourteen ctermbg=NONE ctermfg=199 guibg=#ff00af guibg=NONE
-															hi MyTabFifteen ctermbg=NONE ctermfg=200 guibg=#ff00d7 guibg=NONE
-																hi MyTabSixteen ctermbg=NONE ctermfg=207 guibg=#ff5fff guibg=NONE
-																	hi MyTabSeventeen ctermbg=NONE ctermfg=201 guibg=#ff00ff guibg=NONE
-																		hi MyTabEighteen ctermbg=NONE ctermfg=201 guibg=#af5faf guibg=NONE
-																			hi MyTabNineteen ctermbg=NONE ctermfg=201 guibg=#af5fd7 guibg=NONE
-																				hi MyTabTwenty ctermbg=NONE ctermfg=135 guibg=#af5fff guibg=NONE
+				hi MyTabFour ctermbg=NONE ctermfg=221 guibg=#ffd75f guibg=NONE
+					hi MyTabFive ctermbg=NONE ctermfg=220 guibg=#ffd700 guibg=NONE
+						hi MyTabSix ctermbg=NONE ctermfg=214 guibg=#ffaf00 guibg=NONE
+							hi MyTabSeven ctermbg=NONE ctermfg=208 guibg=#ff8700 guibg=NONE
+								hi MyTabEight ctermbg=NONE ctermfg=202 guibg=#ff5f00 guibg=NONE
+									hi MyTabNine ctermbg=NONE ctermfg=203 guibg=#ff5f5f guibg=NONE
+										hi MyTabTen ctermbg=NONE ctermfg=210 guibg=#ff8787 guibg=NONE
+											hi MyTabEleven ctermbg=NONE ctermfg=169 guibg=#d75faf  guibg=NONE
+												hi MyTabTwelve ctermbg=NONE ctermfg=133 guibg=#af5faf guibg=NONE
+													hi MyTabThirteen ctermbg=NONE ctermfg=135 guibg=#af5fff guibg=NONE
+														hi MyTabFourteen ctermbg=NONE ctermfg=141 guibg=#af87ff guibg=NONE
+															hi MyTabFifteen ctermbg=NONE ctermfg=105 guibg=#8787ff guibg=NONE
+																hi MyTabSixteen ctermbg=NONE ctermfg=111 guibg=#87afff guibg=NONE
+																	hi MyTabSeventeen ctermbg=NONE ctermfg=109 guibg=#87afaf guibg=NONE
+																		hi MyTabEighteen ctermbg=NONE ctermfg=108 guibg=#87af87 guibg=NONE
+																			hi MyTabNineteen ctermbg=NONE ctermfg=107 guibg=#87af5f guibg=NONE
+																				hi MyTabTwenty ctermbg=NONE ctermfg=106 guibg=#87af00 guibg=NONE
 " Afegim el color de background per a hi Normal
 hi MyOtherTabs ctermbg=NONE ctermfg=235 guifg=#202022 guibg=NONE
 
 " Definim els pattern matches pels highlights en qüestió
-" Regex funcional pero amb mal pas a matchadd: '(?<=^\t\t)(\t)(?=[a-z])'
+" Regex funcional pero amb mal pas a vim regex (cas MyTabTwo): '(?<=^\t\t)(\t)(?=[a-z])'
+call matchadd("MyComments",'^\t\{0,\}" .*[^;]$')
 call matchadd("EspaisFinals",'\s\{1,\}$')
 call matchadd("MyOtherTabs",'\t')
 call matchadd("MyTabTwenty",'^\t\{20\}')
@@ -124,16 +116,13 @@ call matchadd("MyTabThree",'^\t\{3\}')
 call matchadd("MyTabTwo",'^\t\{2\}')
 call matchadd("MyTabOne",'^\t\{1\}')
 
-
-" NerdTree 
+" NerdTree
 " Mostrem arxius ocults.
 let NERDTreeShowHidden=1
-
 
 " Emmet
 " div;;, donarà <div><div>
 let g:user_emmet_leader_key=';;'
-
 
 " Lightline
 " Configuració de lightline
@@ -145,7 +134,6 @@ let g:lightline = {
 	\}
 \}
 
-
 " Fuzzy Finder
 " Check blacksuan19/init.vim
 let g:fzf_action = {
@@ -156,12 +144,10 @@ let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffse
 let g:fzf_tags_command = 'ctags -R'
 let $FZF_DEFAULT_OPTS = '--layout=reverse --inline-info'
 
-
 " EZ-Window
-let g:resize_start_key = '<C-r>'  " Inicialment Ctrl-m no funciona. En reasignar sí. 
+let g:resize_start_key = '<C-r>'  " Inicialment Ctrl-m no funciona. En reasignar sí.
 
-
-" (Non Recursive)Remaps 
+" (Non Recursive)Remaps
 let mapleader = ","
 	" Fuzzy Finder remaps
 	noremap <leader>aq :Files<CR>
@@ -194,10 +180,10 @@ let mapleader = ","
 	noremap <leader>wq :wq<CR>
 
 
-" Chuletario
-" cterm en número, gui en hex.
+" Cheat Comments
 
-"0		Black (SYSTEM)		#000000	rgb(0,0,0)			hsl(0,0%,0%)
+" cterm en número, gui en hex.
+"0		Black (SYSTEM)		#000000	rgb(0,0,0)		hsl(0,0%,0%)
 "1		Maroon (SYSTEM)		#800000	rgb(128,0,0)		hsl(0,100%,25%)
 "2		Green (SYSTEM)		#008000	rgb(0,128,0)		hsl(120,100%,25%)
 "3		Olive (SYSTEM)		#808000	rgb(128,128,0)		hsl(60,100%,25%)
@@ -214,8 +200,7 @@ let mapleader = ","
 "14		Aqua (SYSTEM)		#00ffff	rgb(0,255,255)		hsl(180,100%,50%)
 "15		White (SYSTEM)		#ffffff	rgb(255,255,255)	hsl(0,0%,100%)
 "
-"
-" Afegim codi en lua a vimrc
+" Afegir codi en lua a vimrc
 "lua << EOF
 "	vim.opt.list = true
 "EOF
